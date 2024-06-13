@@ -8,8 +8,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, NavBarComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'bibi-decisions';
+  title = 'angular-forms-piot-pocs';
 }
