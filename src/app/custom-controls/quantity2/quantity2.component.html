@@ -1,0 +1,7 @@
+<div class="choose-quantity">
+  <mat-icon (click)="onRemove()">remove_circle</mat-icon>
+  <div>{{ value }}</div>
+  <mat-icon (click)="onAdd()">add_circle</mat-icon>
+
+  <app-error-viewer [errors]="errors" />
+</div>

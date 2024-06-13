@@ -1,0 +1,19 @@
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <app-person2-control
+    [formControl]="fg.controls.personInfo"
+    [errors]="fg.controls.personInfo.errors"
+    legend="Name"
+  />
+  <app-address-anguni [formControl]="fg.controls.adress" legend="Address" />
+  <app-quantity2
+    [formControl]="fg.controls.quantity"
+    [errors]="fg.controls.quantity.errors"
+  />
+
+  <button mat-raised-button type="submit">SUBMIT</button>
+  <mat-error *ngIf="fg.invalid">Form is invalid</mat-error>
+</form>
+<button mat-raised-button (click)="onTouchClick()">TOUCH</button>
+
+<h4>Personal information:</h4>
+<pre>{{ this.fg.controls.personInfo.value | json }}</pre>
