@@ -1,0 +1,13 @@
+<fieldset formGroupName="navnRolleGroup">
+  <legend>Navn og rolle</legend>
+  <mat-form-field appearance="fill" hideRequiredMarker>
+    <mat-label>Navn</mat-label>
+    <input matInput placeholder="Navn" formControlName="navn" />
+    <mat-error>Navn skal angives</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Rolle</mat-label>
+    <input matInput placeholder="Rolle" formControlName="rolle" />
+    <mat-error>Rolle skal angives</mat-error>
+  </mat-form-field>
+</fieldset>
