@@ -7,9 +7,9 @@
 </div> -->
 
 <div>
-  @if (errors && knownErrors && hasKnownErrors(errors, knownErrors)) { @for
-  (knownError of knownErrors; track $index) { @if (errors?.[knownError.code]) {
+  <!-- @if (errors && knownErrors && hasKnownErrors(errors, knownErrors)) { @for
+  (knownError of knownErrors; track $index) { @if (errors.[knownError.code]) {
   <mat-error> {{ knownError.message }}</mat-error>
   } } } @else if (errors) {
-  <mat-error>There are unknown errors</mat-error> }
+  <mat-error>There are unknown errors</mat-error> } -->
 </div>

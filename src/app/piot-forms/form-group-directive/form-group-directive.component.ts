@@ -7,15 +7,16 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { MaterialModule } from '../material-module';
-import { AtFormNavnRolleComponent } from '../piot-forms/at-form-navn-rolle/navn-rolle.component';
+import { MaterialModule } from '../../material-module';
+import { AtFormNavnRolleComponent } from '../at-form-navn-rolle/navn-rolle.component';
 import { CommonModule } from '@angular/common';
-import { AtFormDanskAdresseComponent } from '../piot-forms/at-form-dansk-adresse/at-form-dansk-adresse.component';
+import { AtFormDanskAdresseComponent } from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
 import {
   CannotBeNegativeValidator,
   KnownValidationErrors,
-} from '../custom-controls/custom-control-base/custom-vallidators';
-import { ErrorViewerComponent } from '../custom-controls/error-viewer/error-viewer.component';
+} from '../../custom-controls/custom-control-base/custom-vallidators';
+import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
+import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
 
 @Component({
   selector: 'app-form-group-directive',
@@ -26,7 +27,7 @@ import { ErrorViewerComponent } from '../custom-controls/error-viewer/error-view
     ReactiveFormsModule,
     AtFormNavnRolleComponent,
     AtFormDanskAdresseComponent,
-    ErrorViewerComponent,
+    AtFormEmailComponent,
   ],
   templateUrl: './form-group-directive.component.html',
   styleUrl: './form-group-directive.component.scss',
@@ -48,10 +49,11 @@ export class FormGroupDirectiveComponent {
       ],
       by: [''],
     }),
-    email: [''],
+    email: ['', [Validators.email, Validators.required]],
   });
 
   onSubmit(): void {
+    this.mainForm.markAllAsTouched();
     if (this.mainForm.invalid) {
       console.log(
         'Formularen er ugyldig. Errors: ',
@@ -60,11 +62,10 @@ export class FormGroupDirectiveComponent {
           'husnummer',
         ])
       );
-      console.log('ELO', this.getErrors());
 
       return;
     }
-    console.log('ELO', this.mainForm.value);
+    console.log('Form valid. Value:', this.mainForm.value);
   }
 
   getErrors(): ValidationErrors | null {

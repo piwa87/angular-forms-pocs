@@ -1,0 +1,13 @@
+<form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
+  <at-form-navn-rolle />
+  <at-form-dansk-adresse />
+  <at-form-email />
+  <button mat-button mat-raised-button color="primary">SUBMIT</button>
+  <mat-error *ngIf="mainForm.invalid && mainForm.touched"
+    >Form is invalid</mat-error
+  >
+</form>
+<br />
+<h4>Form value:</h4>
+
+<pre>{{ this.mainForm.value | json }}</pre>
