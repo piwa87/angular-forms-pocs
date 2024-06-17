@@ -49,7 +49,7 @@ export class Person2ControlComponent
   ngOnInit(): void {
     this.fg.markAllAsTouched = () => {
       updateFormControlTree(this.fg);
-      // validateFormControlTree(this.fg);
+      validateFormControlTree(this.fg);
     };
   }
 

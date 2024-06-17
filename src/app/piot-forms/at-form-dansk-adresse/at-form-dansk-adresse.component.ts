@@ -1,15 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MaterialModule } from '../../material-module';
 import {
   ControlContainer,
   FormGroup,
   FormGroupDirective,
   ReactiveFormsModule,
-  ValidationErrors,
 } from '@angular/forms';
 import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
 import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-control-base/custom-control-complex-base.directive';
-import { FormErrorModule } from '../at-form-error-directives/form-error.module';
 
 @Component({
   selector: 'at-form-dansk-adresse',
@@ -25,10 +23,7 @@ import { FormErrorModule } from '../at-form-error-directives/form-error.module';
   ],
 })
 export class AtFormDanskAdresseComponent extends CustomControlComplexBaseDirective {
+  @Input() override fg!: FormGroup;
   parentForm = inject(FormGroupDirective);
   adresseGroup: FormGroup = this.parentForm.form;
-
-  getAdresseGroupErrors(): ValidationErrors | null {
-    return this.adresseGroup.errors;
-  }
 }

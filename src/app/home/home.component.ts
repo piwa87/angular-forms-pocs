@@ -37,7 +37,10 @@ export class HomeComponent {
   fb = inject(FormBuilder);
 
   fg = this.fb.group({
-    personInfo: [{ name: '', surname: '' }],
+    personInfo: this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      surname: ['', [Validators.minLength(5), Validators.required]],
+    }),
     adress: [null],
     quantity: [0, [Validators.max(8), CannotBeNegativeValidator]],
   });
@@ -51,7 +54,7 @@ export class HomeComponent {
   onSubmit() {
     console.log('personInfo:', this.fg.controls.personInfo.value);
 
-    // this.fg.markAllAsTouched();
+    this.fg.markAllAsTouched();
     console.log(this.fg);
 
     console.group('personInfo');

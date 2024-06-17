@@ -1,17 +1,23 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import {
   ControlContainer,
-  FormGroup,
   FormGroupDirective,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
 import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-control-base/custom-control-complex-base.directive';
+import { CommonModule } from '@angular/common';
+import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
 
 @Component({
   selector: 'at-form-navn-rolle',
   standalone: true,
-  imports: [ReactiveFormsModule, MaterialModule],
+  imports: [
+    ReactiveFormsModule,
+    MaterialModule,
+    CommonModule,
+    ErrorViewerComponent,
+  ],
   templateUrl: './navn-rolle.component.html',
   styleUrl: './navn-rolle.component.scss',
   viewProviders: [
@@ -23,5 +29,5 @@ import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-
 })
 export class AtFormNavnRolleComponent extends CustomControlComplexBaseDirective {
   parentForm = inject(FormGroupDirective);
-  navnRolleGroup: FormGroup = this.parentForm.form;
+  navnRolleGroup = this.parentForm.form;
 }

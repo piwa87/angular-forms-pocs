@@ -1,6 +1,7 @@
 <form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
-  <at-form-navn-rolle />
-  <at-form-dansk-adresse />
+  <!-- [fg]="mainForm.controls.navnRolleGroup" -->
+  <at-form-navn-rolle [errors]="mainForm.controls.navnRolleGroup.errors" />
+  <at-form-dansk-adresse [fg]="mainForm.controls.adresseGroup" />
   <at-form-email />
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
   <mat-error *ngIf="mainForm.invalid && mainForm.touched"

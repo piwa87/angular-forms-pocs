@@ -1,13 +1,19 @@
-<fieldset formGroupName="navnRolleGroup">
+<fieldset formGroupName="people">
+  <!-- <fieldset [formGroup]="fg"> -->
   <legend>Navn og rolle</legend>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Navn</mat-label>
     <input matInput placeholder="Navn" formControlName="navn" />
+    <!-- @if (fg.controls['navn'].hasError('required')) {
     <mat-error>Navn skal angives</mat-error>
+    } @if (fg.controls['navn'].hasError('minlength')) {
+    <mat-error>Navn er for kort</mat-error>
+    } -->
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Rolle</mat-label>
     <input matInput placeholder="Rolle" formControlName="rolle" />
     <mat-error>Rolle skal angives</mat-error>
+    <app-error-viewer [errors]="fg.errors" />
   </mat-form-field>
 </fieldset>

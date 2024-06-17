@@ -18,6 +18,7 @@ export class ErrorViewerComponent {
 
   constructor() {
     console.log('KnownValidationErrors', KnownValidationErrors);
+    console.log('errors', this.errors);
   }
 
   hasKnownErrors(

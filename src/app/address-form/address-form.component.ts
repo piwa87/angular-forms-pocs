@@ -7,7 +7,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { statesArray } from './states';
 
-
 @Component({
   selector: 'app-address-form',
   templateUrl: './address-form.component.html',
@@ -19,24 +18,32 @@ import { statesArray } from './states';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
 export class AddressFormComponent {
   private fb = inject(FormBuilder);
-  
+
   addressFormGroup = this.fb.group({
     company: null,
-    firstName: [null, Validators.required],
+    firstName: [
+      null,
+      Validators.compose([Validators.required, Validators.minLength(3)]),
+    ],
     lastName: [null, Validators.required],
     address: [null, Validators.required],
     address2: null,
     city: [null, Validators.required],
     state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(4), Validators.maxLength(4)])
+    postalCode: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(4),
+      ]),
     ],
-    shipping: ['free', Validators.required]
+    shipping: ['free', Validators.required],
   });
 
   hasUnitNumber = false;

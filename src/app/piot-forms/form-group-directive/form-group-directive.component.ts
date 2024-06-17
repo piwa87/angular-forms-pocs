@@ -1,10 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
@@ -13,10 +12,27 @@ import { CommonModule } from '@angular/common';
 import { AtFormDanskAdresseComponent } from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
 import {
   CannotBeNegativeValidator,
-  KnownValidationErrors,
+  MustContainNameValidator,
 } from '../../custom-controls/custom-control-base/custom-vallidators';
-import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
 import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
+
+interface NavnRolleForm {
+  navn: FormControl<string>;
+  rolle: FormControl<string | null>;
+}
+
+interface AdresseGroup {
+  vejnavn: FormControl<string | null>;
+  husnummer: FormControl<number | null>;
+  postnummer: FormControl<string | null>;
+  by: FormControl<string | null>;
+}
+
+interface MainForm {
+  navnRolleGroup: FormGroup<NavnRolleForm>;
+  adresseGroup: FormGroup<AdresseGroup>;
+  email: FormControl<string | null>;
+}
 
 @Component({
   selector: 'app-form-group-directive',
@@ -35,10 +51,10 @@ import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
 export class FormGroupDirectiveComponent {
   fb: FormBuilder = inject(FormBuilder);
 
-  mainForm = this.fb.group({
+  mainForm: FormGroup<MainForm> = this.fb.group({
     navnRolleGroup: this.fb.group({
-      navn: ['', Validators.required],
-      rolle: [''],
+      navn: ['', [Validators.required, Validators.minLength(4)]],
+      rolle: ['', [Validators.minLength(5), Validators.required]],
     }),
     adresseGroup: this.fb.group({
       vejnavn: ['', Validators.required],
@@ -50,25 +66,14 @@ export class FormGroupDirectiveComponent {
       by: [''],
     }),
     email: ['', [Validators.email, Validators.required]],
-  });
+  }) as FormGroup<MainForm>;
 
   onSubmit(): void {
-    this.mainForm.markAllAsTouched();
     if (this.mainForm.invalid) {
-      console.log(
-        'Formularen er ugyldig. Errors: ',
-        this.mainForm.getError('cannotBeNegative', [
-          'adresseGroup',
-          'husnummer',
-        ])
-      );
+      console.log('Formularen er ugyldig.');
 
       return;
     }
     console.log('Form valid. Value:', this.mainForm.value);
-  }
-
-  getErrors(): ValidationErrors | null {
-    return this.mainForm.getError('required', ['navnRolleGroup', 'navn']);
   }
 }

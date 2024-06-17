@@ -17,7 +17,11 @@
       formControlName="husnummer"
       type="number"
     />
+    @if (fg.controls['husnummer'].hasError('cannotBeNegative')) {
+    <mat-error>1..2..3..</mat-error>
+    } @else if (fg.controls['husnummer'].hasError('required')) {
     <mat-error>Husnummer skal angives</mat-error>
+    }
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Postnummer</mat-label>

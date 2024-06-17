@@ -1,0 +1,15 @@
+<form [formGroup]="testForm2" (ngSubmit)="onSubmit()">
+  @for (item of testForm2.controls['people'].value ; track $index) {
+
+  <at-form-navn-rolle [fg]="testForm2" />
+  }
+
+  <button mat-button mat-raised-button color="primary">SUBMIT</button>
+</form>
+<button mat-button mat-raised-button color="primary" (click)="onClick()">
+  ADD
+</button>
+<br />
+<h4>Form value:</h4>
+
+<pre>{{ this.testForm2.value | json }}</pre>

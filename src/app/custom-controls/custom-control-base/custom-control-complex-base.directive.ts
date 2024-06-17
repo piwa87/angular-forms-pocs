@@ -1,9 +1,11 @@
-import { Directive, Input, OnDestroy, inject } from '@angular/core';
+import { Component, Directive, Input, OnDestroy, inject } from '@angular/core';
 import {
   AbstractControl,
+  ControlContainer,
   ControlValueAccessor,
   FormBuilder,
   FormGroup,
+  FormGroupDirective,
   ValidationErrors,
   Validator,
 } from '@angular/forms';
@@ -13,14 +15,16 @@ import { Subscription } from 'rxjs';
   selector: 'app-custom-control-base',
   standalone: true,
 })
-export class CustomControlComplexBaseDirective
+export abstract class CustomControlComplexBaseDirective
   implements ControlValueAccessor, Validator, OnDestroy
 {
   @Input() errors: ValidationErrors | null = null;
   @Input() legend: string = '';
 
   fb = inject(FormBuilder);
-  fg: FormGroup<any> = this.fb.group({});
+
+  @Input({ required: true }) fg!: FormGroup;
+  // fg: FormGroup<any> = this.fb.group({});
 
   onChangeSubs: Subscription[] = [];
 
