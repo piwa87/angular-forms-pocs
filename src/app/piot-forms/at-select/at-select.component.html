@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>{{ label }}</legend>
+  <mat-form-field appearance="fill" hideRequiredMarker>
+    <mat-label>{{ label }}</mat-label>
+    <mat-select [compareWith]="compareFn" [formControlName]="fc">
+      @if (enableEmptyOption) {
+      <mat-option [value]="null"></mat-option>
+      } @for (item of items; track $index) {
+      <mat-option [value]="item.key">{{ item.value }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</fieldset>

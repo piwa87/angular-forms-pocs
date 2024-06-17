@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormGroupDirectiveComponent } from './form-group-directive.component';
+import { TestForm1Component } from './test-form1.component';
 
 describe('FormGroupDirectiveComponent', () => {
-  let component: FormGroupDirectiveComponent;
-  let fixture: ComponentFixture<FormGroupDirectiveComponent>;
+  let component: TestForm1Component;
+  let fixture: ComponentFixture<TestForm1Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormGroupDirectiveComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(FormGroupDirectiveComponent);
+      imports: [TestForm1Component],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(TestForm1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

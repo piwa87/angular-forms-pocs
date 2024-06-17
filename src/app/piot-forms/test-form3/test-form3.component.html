@@ -1,0 +1,24 @@
+<form [formGroup]="testForm3" (ngSubmit)="onSubmit()">
+  <at-select fc="yndlingsdyr" label="Yndlings Dyr" [items]="kaeledyrsItems" />
+  <at-select2
+    [formControl]="testForm3.controls['two']"
+    label="Two"
+    [items]="kaeledyrsItems"
+    [enableEmptyOption]="true"
+  />
+  <at-form-email fc="emailYoyo" />
+  <at-radio-group
+    fc="favoritFarve"
+    label="Favorit farve:"
+    [options]="favoritFarveItems"
+    [direction]="'vertical'"
+  />
+  <at-form-navn-rolle fc="person2" />
+  <br />
+  <button mat-button mat-raised-button color="primary">SUBMIT</button>
+</form>
+
+<br />
+<h4>Form value:</h4>
+
+<pre>{{ this.testForm3.value | json }}</pre>

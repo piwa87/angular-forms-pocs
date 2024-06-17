@@ -1,0 +1,17 @@
+@if (label) {
+<p>{{ label }}</p>
+}
+
+<mat-radio-group
+  [ngClass]="direction"
+  class="at-form-radio-group"
+  [formControlName]="fc"
+>
+  @for (option of options; track $index) {
+  <mat-radio-button [value]="option.value" type="radio" color="primary">
+    <!-- [checked]="fg.controls[fc].value === option.value" -->
+    <p>{{ option.label }}</p>
+  </mat-radio-button>
+
+  }
+</mat-radio-group>

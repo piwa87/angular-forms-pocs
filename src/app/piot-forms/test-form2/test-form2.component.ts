@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { AtFormNavnRolleComponent } from '../at-form-navn-rolle/navn-rolle.component';
 import { MaterialModule } from '../../material-module';
+import { printErrors } from '../../utils/print-errors.util';
 
 interface Person {
   navn: string;
@@ -56,12 +57,14 @@ export class TestForm2Component {
   }
 
   onSubmit(): void {
-    if (this.testForm2.invalid) {
+    if (this.people.invalid) {
       console.log('Formularen er ugyldig.');
 
       return;
     }
-    console.log('Form valid. Value:', this.testForm2.value);
+    console.log('Form valid. Value:', this.people.value);
+
+    printErrors(this.people);
   }
 
   onClick(): void {

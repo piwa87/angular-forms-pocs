@@ -10,10 +10,7 @@ import { MaterialModule } from '../../material-module';
 import { AtFormNavnRolleComponent } from '../at-form-navn-rolle/navn-rolle.component';
 import { CommonModule } from '@angular/common';
 import { AtFormDanskAdresseComponent } from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
-import {
-  CannotBeNegativeValidator,
-  MustContainNameValidator,
-} from '../../custom-controls/custom-control-base/custom-vallidators';
+import { CannotBeNegativeValidator } from '../../custom-controls/custom-control-base/custom-vallidators';
 import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
 
 interface NavnRolleForm {
@@ -48,7 +45,7 @@ interface MainForm {
   templateUrl: './form-group-directive.component.html',
   styleUrl: './form-group-directive.component.scss',
 })
-export class FormGroupDirectiveComponent {
+export class TestForm1Component {
   fb: FormBuilder = inject(FormBuilder);
 
   mainForm: FormGroup<MainForm> = this.fb.group({
