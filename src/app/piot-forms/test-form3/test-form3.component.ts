@@ -11,12 +11,18 @@ import {
 } from '@angular/forms';
 import { AtSelectComponent } from '../at-select/at-select.component';
 import { MaterialModule } from '../../material-module';
-import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
+import {
+  AtFormEmailComponent,
+  EmailForm,
+} from '../at-form-email/at-form-email.component';
 import {
   AtRadioGroupComponent,
   RadioButtonModel,
 } from '../at-radio-group/at-radio-group.component';
-import { AtFormNavnRolleComponent } from '../at-form-navn-rolle/navn-rolle.component';
+import {
+  AtFormNavnRolleComponent,
+  NavnRolleForm,
+} from '../at-form-navn-rolle/navn-rolle.component';
 import { printErrors } from '../../utils/print-errors.util';
 import { AtSelect2Component } from '../at-select2/at-select2.component';
 
@@ -27,8 +33,8 @@ import { AtSelect2Component } from '../at-select2/at-select2.component';
     AtFormEmailComponent,
     AtFormNavnRolleComponent,
     AtRadioGroupComponent,
-    AtSelect2Component,
     AtSelectComponent,
+    AtSelect2Component,
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
@@ -39,18 +45,17 @@ import { AtSelect2Component } from '../at-select2/at-select2.component';
 export class TestForm3Component {
   fb = inject(FormBuilder);
 
-  testForm3: FormGroup = this.fb.group({
+  testForm3 = this.fb.group({
     yndlingsdyr: this.fb.control<string | null>('', [Validators.required]),
-    two: this.fb.control<string>(''),
-    emailYoyo: this.fb.control<string | null>(null, [
+    two: this.fb.control<string | null>(null, Validators.required),
+    emailGrim: this.fb.control<string | null>(null, [
       Validators.required,
       Validators.minLength(2),
+      Validators.email,
     ]),
-    favoritFarve: this.fb.control<string>('yellow', Validators.required),
-    person2: this.fb.group({
-      navn: this.fb.control<string | null>(null, Validators.required),
-      rolle: this.fb.control<number | null>(null, Validators.required),
-    }),
+    emailPaen: EmailForm,
+    favoritFarve: this.fb.control<string>('green', Validators.required),
+    person23: NavnRolleForm,
   });
 
   kaeledyrsItems: KeyValue<any, string>[] = [
@@ -67,16 +72,13 @@ export class TestForm3Component {
   ];
 
   onSubmit() {
-    console.log('this.fg.value: ', this.testForm3.value);
-    console.log('this.fg.valid: ', this.testForm3.valid);
-    console.log('this.fg.errors: ', this.testForm3.errors);
-
-    // const myControls: { [key: string]: any } = this.testForm3.controls;
-    // for (const key in myControls) {
-    //   const thisControl = myControls[key] as FormControl;
-    //   console.log(`${key} has following errors`, thisControl.errors);
-    // }
-
-    printErrors(this.testForm3);
+    if (this.testForm3.invalid) {
+      console.log('Formen er ugyldig');
+      printErrors(this.testForm3);
+      return;
+    }
+    console.log('this.testForm3.value: ', this.testForm3.value);
+    console.log('this.testForm3.valid: ', this.testForm3.valid);
+    console.log('this.testForm3.errors: ', this.testForm3.errors);
   }
 }

@@ -22,8 +22,6 @@ import { MatRadioModule } from '@angular/material/radio';
   ],
 })
 export class AtRadioGroupComponent {
-  // parentForm = inject(FormGroupDirective);
-
   @Input({ required: true }) fc: string = '';
 
   @Input() label?: string;

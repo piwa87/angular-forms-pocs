@@ -1,9 +1,11 @@
-<!-- <fieldset formGroupName="email"> -->
 <fieldset>
   <legend>Email</legend>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Email</mat-label>
-    <input matInput placeholder="Email" formControlName="email" type="email" />
-    <mat-error>Ugyldig email</mat-error>
+    <input matInput placeholder="Email" [formControlName]="fc" type="email" />
+    <mat-error>Something is wrong</mat-error>
   </mat-form-field>
+  <h4>Errors:</h4>
+  <pre>{{ errors | json }}</pre>
+  <app-error-viewer [errors]="errors"></app-error-viewer>
 </fieldset>

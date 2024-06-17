@@ -1,10 +1,8 @@
-<div>
-  @for (knownError of knownErrors; track $index) { @if
-  (errors?.[knownError.code]) {
-  <mat-error> {{ knownError.message }}</mat-error>
-  } } @if (errors && !hasKnownErrors(errors, knownErrors)) {
-  <mat-error>There are some errors</mat-error> }
-</div>
+@for (knownError of knownErrors; track $index) { @if (errors?.[knownError.code])
+{
+<mat-error> {{ knownError.message }}</mat-error>
+} } @if (errors && !hasKnownErrors(errors, knownErrors)) {
+<mat-error>There are some errors</mat-error> }
 
 <!-- <div>
   @if (errors && knownErrors && hasKnownErrors(errors, knownErrors)) { @for

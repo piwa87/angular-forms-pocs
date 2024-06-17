@@ -1,18 +1,23 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MaterialModule } from '../../material-module';
 import {
   ControlContainer,
-  FormGroup,
   FormGroupDirective,
   ReactiveFormsModule,
+  ValidationErrors,
 } from '@angular/forms';
-import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
-import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-control-base/custom-control-complex-base.directive';
+import { CommonModule } from '@angular/common';
+import { AtErrorComponent } from '../at-error/at-error.component';
 
 @Component({
   selector: 'at-form-dansk-adresse',
   standalone: true,
-  imports: [ReactiveFormsModule, MaterialModule, ErrorViewerComponent],
+  imports: [
+    AtErrorComponent,
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './at-form-dansk-adresse.component.html',
   styleUrl: './at-form-dansk-adresse.component.scss',
   viewProviders: [
@@ -22,8 +27,7 @@ import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-
     },
   ],
 })
-export class AtFormDanskAdresseComponent extends CustomControlComplexBaseDirective {
-  @Input() override fg!: FormGroup;
-  parentForm = inject(FormGroupDirective);
-  adresseGroup: FormGroup = this.parentForm.form;
+export class AtFormDanskAdresseComponent {
+  @Input({ required: true }) fc: string = '';
+  @Input({ required: true }) errors: ValidationErrors | null = null;
 }

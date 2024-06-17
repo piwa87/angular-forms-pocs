@@ -6,16 +6,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { AddressAnguniComponent } from '../custom-controls/adress-anguni/adress-anguni.component';
+import {
+  AddressAnguniComponent,
+  AddressForm,
+} from '../custom-controls/adress-anguni/adress-anguni.component';
 import { Quantity2Component } from '../custom-controls/quantity2/quantity2.component';
 import {
   CannotBeNegativeValidator,
   MustContainNameValidator,
 } from '../custom-controls/custom-control-base/custom-vallidators';
 import { ErrorViewerComponent } from '../custom-controls/error-viewer/error-viewer.component';
-import { Person2ControlComponent } from '../custom-controls/person2-control/person2-control.component';
+import {
+  Person2ControlComponent,
+  Person2Form,
+} from '../custom-controls/person2-control/person2-control.component';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AtFormEmailComponent } from '../piot-forms/at-form-email/at-form-email.component';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AddressAnguniComponent,
     ErrorViewerComponent,
     Person2ControlComponent,
+    AtFormEmailComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -37,12 +45,14 @@ export class HomeComponent {
   fb = inject(FormBuilder);
 
   fg = this.fb.group({
-    personInfo: this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      surname: ['', [Validators.minLength(5), Validators.required]],
-    }),
-    adress: [null],
+    // personInfo: this.fb.group({
+    //   name: ['', Validators.required],
+    //   surname: [''],
+    // }),
+    personInfo: Person2Form,
+    adress: AddressForm,
     quantity: [0, [Validators.max(8), CannotBeNegativeValidator]],
+    email: ['', [Validators.required, Validators.email]],
   });
 
   onTouchClick() {

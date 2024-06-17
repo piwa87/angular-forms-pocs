@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormControl,
+  FormGroup,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -37,10 +39,10 @@ export class Person2ControlComponent
   implements OnInit
 {
   onChange = (value: any) => {};
-  override fg = this.fb.group({
-    name: ['', [Validators.minLength(4)]],
-    surname: ['', [Validators.minLength(4)]],
-  });
+  // override fg = this.fb.group({
+  //   name: ['hello', [Validators.minLength(4)]],
+  //   surname: ['hello', [Validators.minLength(4)]],
+  // });
 
   constructor() {
     super();
@@ -58,3 +60,13 @@ export class Person2ControlComponent
     this.onChange(this.fg.value);
   }
 }
+
+export const Person2Form = new FormGroup({
+  navn: new FormControl<string | null>(null, [Validators.required]),
+  rolle: new FormControl<string | null>(null, [Validators.required]),
+});
+
+// export interface Person2 {
+//   navn: FormControl<string | null>;
+//   rolle: FormControl<string | null>;
+// }

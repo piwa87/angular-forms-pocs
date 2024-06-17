@@ -1,13 +1,14 @@
-import { KeyValue } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
-import { MaterialModule } from '../../material-module';
+import { CommonModule, KeyValue } from '@angular/common';
+import { Component, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { CustomControlSingleBaseDirective } from '../../custom-controls/custom-control-base/custom-control-single-base.directive';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { CustomSingleNewBase } from '../../custom-controls/custom-control-base/custom-single-new';
 
 @Component({
-  selector: 'at-select2',
+  selector: 'at-select-2',
   standalone: true,
-  imports: [MaterialModule, ReactiveFormsModule],
+  imports: [CommonModule, MatInputModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './at-select2.component.html',
   styleUrl: './at-select2.component.scss',
   providers: [
@@ -18,7 +19,7 @@ import { CustomControlSingleBaseDirective } from '../../custom-controls/custom-c
     },
   ],
 })
-export class AtSelect2Component extends CustomControlSingleBaseDirective {
+export class AtSelect2Component extends CustomSingleNewBase {
   @Input() label: string = '';
   @Input() enableEmptyOption: boolean = false;
   @Input() items: KeyValue<any, string>[] = [];

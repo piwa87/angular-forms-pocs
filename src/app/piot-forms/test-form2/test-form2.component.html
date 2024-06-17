@@ -1,14 +1,33 @@
 <form [formGroup]="testForm2" (ngSubmit)="onSubmit()">
-  @for (item of people.value ; track $index) {
+  <div formArrayName="people">
+    <div
+      *ngFor="let personControl of people.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-form-field appearance="fill" hideRequiredMarker>
+        <mat-label>Navn</mat-label>
+        <input matInput placeholder="Navn" formControlName="navn" />
+        <mat-error>Navn skal angives</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" hideRequiredMarker>
+        <mat-label>Rolle</mat-label>
+        <input matInput placeholder="Rolle" formControlName="rolle" />
+        <mat-error>Rolle skal angives</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
 
-  <at-form-navn-rolle fc="people" />
-  }
-
+  <mat-divider />
+  <button mat-button mat-raised-button color="primary" (click)="onClick()">
+    ADD A JOHN
+  </button>
+  <mat-divider />
+  <button mat-button mat-raised-button color="primary" (click)="addEmptyJohn()">
+    ADD AN EMPTY JOHN
+  </button>
+  <mat-divider />
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
 </form>
-<button mat-button mat-raised-button color="primary" (click)="onClick()">
-  ADD
-</button>
 
 <br />
 <h4>Form value:</h4>

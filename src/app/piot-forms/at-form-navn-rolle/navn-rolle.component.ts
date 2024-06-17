@@ -1,8 +1,11 @@
 import { Component, Input, inject } from '@angular/core';
 import {
   ControlContainer,
+  FormControl,
+  FormGroup,
   FormGroupDirective,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
 import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-control-base/custom-control-complex-base.directive';
@@ -27,7 +30,14 @@ import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-v
     },
   ],
 })
-export class AtFormNavnRolleComponent extends CustomControlComplexBaseDirective {
-  parentForm = inject(FormGroupDirective);
-  navnRolleGroup = this.parentForm.form;
+export class AtFormNavnRolleComponent {
+  @Input({ required: true }) fc: string = '';
 }
+
+export const NavnRolleForm = new FormGroup({
+  navn: new FormControl<string | null>(null, [
+    Validators.required,
+    Validators.minLength(4),
+  ]),
+  rolle: new FormControl<string | null>(null, [Validators.required]),
+});

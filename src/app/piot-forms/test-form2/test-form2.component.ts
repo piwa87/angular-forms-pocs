@@ -44,7 +44,7 @@ export class TestForm2Component {
   createPersonFormGroup(person: Person): FormGroup {
     return this.fb.group({
       navn: [person.navn, Validators.required],
-      rolle: [person.rolle, [Validators.required, Validators.min(0)]],
+      rolle: [person.rolle, [Validators.required, Validators.maxLength(5)]],
     });
   }
 
@@ -53,21 +53,23 @@ export class TestForm2Component {
   }
 
   addPerson(person: Person): void {
-    this.people.push(this.createPersonFormGroup(person));
+    this.people.push(this.createPersonFormGroup(person), { emitEvent: false });
   }
 
   onSubmit(): void {
     if (this.people.invalid) {
       console.log('Formularen er ugyldig.');
-
+      printErrors(this.testForm2);
       return;
     }
     console.log('Form valid. Value:', this.people.value);
-
-    printErrors(this.people);
   }
 
   onClick(): void {
     this.addPerson(person);
+  }
+
+  addEmptyJohn(): void {
+    this.addPerson({ navn: '', rolle: '' });
   }
 }

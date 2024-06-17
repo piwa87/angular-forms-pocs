@@ -1,8 +1,9 @@
-import { Component, Input, OnDestroy, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   FormBuilder,
+  FormControl,
   FormGroup,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
@@ -13,6 +14,11 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Subscription } from 'rxjs';
+import { CustomControlComplexBaseDirective } from '../custom-control-base/custom-control-complex-base.directive';
+import {
+  updateFormControlTree,
+  validateFormControlTree,
+} from '../custom-control-base/update-form-control-tree';
 
 @Component({
   selector: 'app-address-anguni',
@@ -32,77 +38,36 @@ import { Subscription } from 'rxjs';
     },
   ],
 })
+// implements ControlValueAccessor, OnDestroy, Validator
 export class AddressAnguniComponent
-  implements ControlValueAccessor, OnDestroy, Validator
+  extends CustomControlComplexBaseDirective
+  implements OnInit
 {
-  @Input() legend: string = '';
+  onChange = (value: any) => {};
 
-  fb = inject(FormBuilder);
+  // @Input() legend: string = '';
+  // @Input({ required: true }) fg!: FormGroup;
 
-  form: FormGroup = this.fb.group({
-    addressLine1: [null, [Validators.required]],
-    addressLine2: [null, [Validators.required]],
-    zipCode: [null, [Validators.required]],
-    city: [null, [Validators.required]],
-  });
-
-  onTouched: Function = () => {};
-
-  onChangeSubs: Subscription[] = [];
-
-  ngOnDestroy() {
-    for (let sub of this.onChangeSubs) {
-      sub.unsubscribe();
-    }
+  constructor() {
+    super();
   }
 
-  registerOnChange(onChange: any) {
-    const sub = this.form.valueChanges.subscribe(onChange);
-    this.onChangeSubs.push(sub);
+  ngOnInit(): void {
+    //   this.fg.markAllAsTouched = () => {
+    //     updateFormControlTree(this.fg);
+    //     validateFormControlTree(this.fg);
+    //   };
   }
 
-  registerOnTouched(onTouched: Function) {
-    this.onTouched = onTouched;
-  }
-
-  setDisabledState(disabled: boolean) {
-    if (disabled) {
-      this.form.disable();
-    } else {
-      this.form.enable();
-    }
-  }
-
-  writeValue(value: any) {
-    if (value) {
-      this.form.setValue(value, { emitEvent: false });
-    }
-  }
-
-  validate(control: AbstractControl) {
-    if (this.form.valid) {
-      return null;
-    }
-
-    let errors: any = {};
-
-    errors = this.addControlErrors(errors, 'addressLine1');
-    errors = this.addControlErrors(errors, 'addressLine2');
-    errors = this.addControlErrors(errors, 'zipCode');
-    errors = this.addControlErrors(errors, 'city');
-
-    return errors;
-  }
-
-  addControlErrors(allErrors: any, controlName: string) {
-    const errors = { ...allErrors };
-
-    const controlErrors = this.form.controls[controlName].errors;
-
-    if (controlErrors) {
-      errors[controlName] = controlErrors;
-    }
-
-    return errors;
-  }
+  // onTouchedAndChange() {
+  //   this.onTouched();
+  //   this.onChange(this.fg.value);
+  // }
 }
+
+export const AddressForm = new FormGroup({
+  addressLine1: new FormControl<string | null>(null, [Validators.required]),
+  addressLine2: new FormControl<string | null>(null, [Validators.required]),
+  zipCode: new FormControl<number | null>(null, [Validators.required]),
+  city: new FormControl<string | null>(null, [Validators.required]),
+});

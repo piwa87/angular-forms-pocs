@@ -22,6 +22,9 @@ export const printErrors = (
       printErrors(childControl, `${path}${index}.`);
     });
   } else if (control instanceof FormControl) {
-    console.log(`${path} has following errors`, control.errors);
+    if (control.errors) {
+      console.log(`${path} has following errors`, control.errors);
+    }
+    // console.log(`${path} has following errors`, control.errors);
   }
 };

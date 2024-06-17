@@ -1,9 +1,11 @@
 <form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
-  <!-- [fg]="mainForm.controls.navnRolleGroup"
-  [errors]="mainForm.controls.navnRolleGroup.errors" -->
-  <at-form-navn-rolle fc="navnRolleGroup" />
-  <at-form-dansk-adresse [fg]="mainForm.controls.adresseGroup" />
-  <at-form-email fc="email" />
+  <at-form-navn-rolle fc="navnRolle100" />
+  <at-form-navn-rolle-two
+    [fg]="mainForm.controls.navnRolle2"
+    [errors]="mainForm.controls.navnRolle2.errors"
+  />
+  <at-form-dansk-adresse fc="adresseGroup" [errors]="adresseErrors" />
+  <at-form-email fc="email" [errors]="mainForm.controls.email.errors" />
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
   <mat-error *ngIf="mainForm.invalid && mainForm.touched"
     >Form is invalid</mat-error

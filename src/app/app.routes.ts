@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AddressFormComponent } from './address-form/address-form.component';
 import { GenericControlsComponent } from './generic-controls/generic-controls.component';
 import { TestForm1Component } from './piot-forms/test-form1/test-form1.component';
 import { TestForm2Component } from './piot-forms/test-form2/test-form2.component';
@@ -21,7 +20,6 @@ export const navBarRoutes: Routes = [
   },
   { path: 'test-3', component: TestForm3Component },
   { path: 'home', component: HomeComponent },
-  { path: 'address', component: AddressFormComponent },
   { path: 'generic-controls', component: GenericControlsComponent },
 ];
 

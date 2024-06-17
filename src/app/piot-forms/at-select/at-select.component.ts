@@ -21,8 +21,6 @@ import {
   ],
 })
 export class AtSelectComponent {
-  // parentForm = inject(FormGroupDirective);
-
   @Input({ required: true }) fc: string = '';
 
   @Input() label: string = '';

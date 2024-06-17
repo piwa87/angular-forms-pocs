@@ -1,4 +1,4 @@
-<fieldset formGroupName="adresseGroup">
+<fieldset [formGroupName]="fc">
   <legend>Adresse</legend>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Vejnavn</mat-label>
@@ -8,6 +8,7 @@
       formControlName="vejnavn"
       type="text"
     />
+    <at-error [errors]="errors" fc="vejnavn" />
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Husnummer</mat-label>
@@ -17,24 +18,26 @@
       formControlName="husnummer"
       type="number"
     />
-    @if (fg.controls['husnummer'].hasError('cannotBeNegative')) {
+    @if (errors?.['husnummer']?.['cannotBeNegative']) {
     <mat-error>1..2..3..</mat-error>
-    } @else if (fg.controls['husnummer'].hasError('required')) {
+    } @else if (errors?.['husnummer']?.['required']) {
     <mat-error>Husnummer skal angives</mat-error>
     }
   </mat-form-field>
+
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Postnummer</mat-label>
-    <input
-      matInput
-      placeholder="Postnummer"
-      formControlName="postnummer"
-      type="number"
-    />
+    <input matInput placeholder="Postnummer" formControlName="postnummer" />
+    @if (errors?.['postnummer']?.['pattern']) {
     <mat-error>Angiv 4-cifret postnummer</mat-error>
+    } @else if (errors?.['postnummer']?.['required']) {
+    <mat-error>Skal angives</mat-error>
+    }
+    <mat-error></mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>By</mat-label>
     <input matInput placeholder="By" formControlName="by" />
   </mat-form-field>
+  <pre>{{ errors | json }}</pre>
 </fieldset>

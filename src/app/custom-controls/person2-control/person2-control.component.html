@@ -5,18 +5,14 @@
       matInput
       type="text"
       placeholder="First Name"
-      formControlName="name"
-      (blur)="onTouchedAndChange()"
+      formControlName="navn"
     />
+    <!-- (blur)="onTouchedAndChange()" -->
+    <mat-error>Elo</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input
-      matInput
-      type="text"
-      placeholder="Surname"
-      formControlName="surname"
-      (blur)="onTouchedAndChange()"
-    />
+    <input matInput type="text" placeholder="Surname" formControlName="rolle" />
+    <!-- (blur)="onTouchedAndChange()" -->
   </mat-form-field>
 
   <app-error-viewer [errors]="errors" />
