@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { AtFormNavnRolleComponent } from '../at-form-navn-rolle/navn-rolle.component';
 import { MaterialModule } from '../../material-module';
-import { printErrors } from '../../utils/print-errors.util';
+import { printErrors } from '../utils/print-errors.util';
 
 interface Person {
   navn: string;

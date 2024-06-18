@@ -8,7 +8,7 @@
       [formControlName]="fcName"
       type="email"
     />
-    <mat-error>Something is wrong</mat-error>
+    <mat-error>{{ getErrors() }}</mat-error>
   </mat-form-field>
   <h6>Errors:</h6>
   <pre>{{ errors | json }}</pre>

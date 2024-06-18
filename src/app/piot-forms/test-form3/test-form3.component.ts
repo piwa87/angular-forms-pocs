@@ -2,7 +2,7 @@ import { CommonModule, KeyValue } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { printErrors } from '../../utils/print-errors.util';
+import { printErrors } from '../utils/print-errors.util';
 import {
   AtFormEmailComponent,
   EmailForm,

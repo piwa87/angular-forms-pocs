@@ -4,13 +4,13 @@
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Navn</mat-label>
     <input matInput placeholder="Navn" formControlName="navn" />
-    <mat-error>{{ getErrorsFormGroup('navn') }}</mat-error>
+    <mat-error>{{ getErrorsFrom('navn') }}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Rolle</mat-label>
     <input matInput placeholder="Rolle" formControlName="rolle" />
-    <mat-error>{{ getErrorsFormGroup('rolle') }}</mat-error>
+    <mat-error>{{ getErrorsFrom('rolle') }}</mat-error>
   </mat-form-field>
 
   <h6>Errors:</h6>

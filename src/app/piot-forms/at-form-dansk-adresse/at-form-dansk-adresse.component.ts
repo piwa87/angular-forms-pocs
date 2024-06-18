@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CannotBeNegativeValidator } from '../../custom-controls/custom-control-base/custom-vallidators';
+import { CannotBeNegativeValidator } from '../utils/custom-vallidators';
 import { MultipleFieldBase } from '../base-classes/multiple-field-base';
 
 @Component({

@@ -18,8 +18,11 @@ import {
   DanskAdresseForm,
   AtFormDanskAdresseComponent,
 } from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
-import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
-import { printErrors } from '../../utils/print-errors.util';
+import {
+  AtFormEmailComponent,
+  EmailForm,
+} from '../at-form-email/at-form-email.component';
+import { printErrors } from '../utils/print-errors.util';
 
 interface NavnRolleForm {
   navn: FormControl<string | null>;
@@ -34,14 +37,13 @@ interface AdresseGroup {
 }
 
 interface MainForm {
-  navnRolle100: FormGroup<NavnRolleForm>;
-  navnRolle2: FormGroup<NavnRolleForm>;
+  navnRolleGroup: FormGroup<NavnRolleForm>;
   adresseGroup: FormGroup<AdresseGroup>;
   email: FormControl<string | null>;
 }
 
 @Component({
-  selector: 'app-form-group-directive',
+  selector: 'app-test-form1',
   standalone: true,
   imports: [
     CommonModule,
@@ -57,33 +59,18 @@ export class TestForm1Component implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
 
   testForm1: FormGroup<MainForm> = this.fb.group({
-    navnRolle100: this.fb.group({
-      navn: ['', [Validators.required, Validators.minLength(4)]],
-      rolle: [''],
-    }),
-    // navnRolle100: NavnRolleForm,
-    navnRolle2: this.fb.group({
-      navn: [
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(5),
-        ]),
-      ],
-      rolle: ['', [Validators.minLength(5), Validators.required]],
-    }),
+    navnRolleGroup: NavnRolleForm,
     adresseGroup: DanskAdresseForm,
-    email: ['', [Validators.email, Validators.required]],
+    email: EmailForm,
   }) as FormGroup<MainForm>;
 
   navnRolleErrors: ValidationErrors | null = null;
   adresseErrors: ValidationErrors | null = null;
 
   ngOnInit(): void {
-    this.testForm1.controls.navnRolle100.valueChanges.subscribe((value) => {
+    this.testForm1.controls.navnRolleGroup.valueChanges.subscribe((value) => {
       this.navnRolleErrors = collectErrors(
-        this.testForm1.controls.navnRolle100
+        this.testForm1.controls.navnRolleGroup
       );
     });
     this.testForm1.controls.adresseGroup.valueChanges.subscribe((value) => {
@@ -92,7 +79,9 @@ export class TestForm1Component implements OnInit {
   }
 
   onSubmit(): void {
-    this.navnRolleErrors = collectErrors(this.testForm1.controls.navnRolle100);
+    this.navnRolleErrors = collectErrors(
+      this.testForm1.controls.navnRolleGroup
+    );
     this.adresseErrors = collectErrors(this.testForm1.controls.adresseGroup);
     this.testForm1.markAllAsTouched();
     if (this.testForm1.invalid) {

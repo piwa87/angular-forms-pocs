@@ -1,5 +1,5 @@
 <form [formGroup]="testForm1" (ngSubmit)="onSubmit()">
-  <at-form-navn-rolle fgName="navnRolle100" [errors]="navnRolleErrors" />
+  <at-form-navn-rolle fgName="navnRolleGroup" [errors]="navnRolleErrors" />
   <at-form-dansk-adresse fgName="adresseGroup" [errors]="adresseErrors" />
   <at-form-email fcName="email" [errors]="testForm1.controls.email.errors" />
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
@@ -9,5 +9,4 @@
 </form>
 <br />
 <h4>Form value:</h4>
-
 <pre>{{ this.testForm1.value | json }}</pre>
