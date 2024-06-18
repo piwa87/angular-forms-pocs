@@ -30,6 +30,7 @@ export enum ValidationErrorCode {
   mustContainName = 'mustContainName',
   required = 'required',
   minlength = 'minlength',
+  pattern = 'pattern',
 }
 
 export const KnownValidationErrors: {
@@ -49,6 +50,10 @@ export const KnownValidationErrors: {
   {
     code: ValidationErrorCode.minlength,
     message: 'Minimum længde er ikke opnået',
+  },
+  {
+    code: ValidationErrorCode.pattern,
+    message: 'Forkert format',
   },
 ];
 

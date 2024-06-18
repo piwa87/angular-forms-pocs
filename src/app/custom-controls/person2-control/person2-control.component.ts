@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { ErrorViewerComponent } from '../error-viewer/error-viewer.component';
 import { CustomControlComplexBaseDirective } from '../custom-control-base/custom-control-complex-base.directive';
 import {
   updateFormControlTree,
@@ -18,7 +17,7 @@ import {
 @Component({
   selector: 'app-person2-control',
   standalone: true,
-  imports: [ReactiveFormsModule, MatInputModule, ErrorViewerComponent],
+  imports: [ReactiveFormsModule, MatInputModule],
   templateUrl: './person2-control.component.html',
   styleUrl: './person2-control.component.scss',
   providers: [

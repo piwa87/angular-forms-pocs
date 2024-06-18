@@ -1,8 +1,7 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   ControlContainer,
   FormControl,
-  FormGroup,
   FormGroupDirective,
   ReactiveFormsModule,
   ValidationErrors,
@@ -10,17 +9,11 @@ import {
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
 import { CommonModule } from '@angular/common';
-import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
 
 @Component({
   selector: 'at-form-email',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MaterialModule,
-    CommonModule,
-    ErrorViewerComponent,
-  ],
+  imports: [ReactiveFormsModule, MaterialModule, CommonModule],
   templateUrl: './at-form-email.component.html',
   styleUrl: './at-form-email.component.scss',
   viewProviders: [

@@ -1,14 +1,6 @@
 import { CommonModule, KeyValue } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AtSelectComponent } from '../at-select/at-select.component';
 import { MaterialModule } from '../../material-module';
 import {
@@ -40,7 +32,6 @@ import { AtSelect2Component } from '../at-select2/at-select2.component';
     ReactiveFormsModule,
   ],
   templateUrl: './test-form3.component.html',
-  styleUrl: './test-form3.component.scss',
 })
 export class TestForm3Component {
   fb = inject(FormBuilder);

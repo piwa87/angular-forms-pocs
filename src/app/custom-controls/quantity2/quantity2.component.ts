@@ -2,23 +2,13 @@ import { Component } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CustomControlSingleBaseDirective } from '../custom-control-base/custom-control-single-base.directive';
-import {
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
-} from '@angular/forms';
+import { NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { ErrorViewerComponent } from '../error-viewer/error-viewer.component';
 
 @Component({
   selector: 'app-quantity2',
   standalone: true,
-  imports: [
-    MatIconModule,
-    MatIconButton,
-    MatSelectModule,
-    ErrorViewerComponent,
-  ],
+  imports: [MatIconModule, MatIconButton, MatSelectModule],
   templateUrl: './quantity2.component.html',
   styleUrl: './quantity2.component.scss',
   providers: [

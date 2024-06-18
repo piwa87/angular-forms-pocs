@@ -1,21 +1,12 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
   AddressAnguniComponent,
   AddressForm,
 } from '../custom-controls/adress-anguni/adress-anguni.component';
 import { Quantity2Component } from '../custom-controls/quantity2/quantity2.component';
-import {
-  CannotBeNegativeValidator,
-  MustContainNameValidator,
-} from '../custom-controls/custom-control-base/custom-vallidators';
-import { ErrorViewerComponent } from '../custom-controls/error-viewer/error-viewer.component';
+import { CannotBeNegativeValidator } from '../custom-controls/custom-control-base/custom-vallidators';
 import {
   Person2ControlComponent,
   Person2Form,
@@ -28,15 +19,14 @@ import { AtFormEmailComponent } from '../piot-forms/at-form-email/at-form-email.
   selector: 'app-home',
   standalone: true,
   imports: [
+    AddressAnguniComponent,
+    AtFormEmailComponent,
     CommonModule,
-    ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    Quantity2Component,
-    AddressAnguniComponent,
-    ErrorViewerComponent,
     Person2ControlComponent,
-    AtFormEmailComponent,
+    Quantity2Component,
+    ReactiveFormsModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

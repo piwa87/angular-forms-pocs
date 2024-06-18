@@ -48,8 +48,7 @@ interface MainForm {
     AtFormEmailComponent,
     AtFormNavnRolleTwoComponent,
   ],
-  templateUrl: './form-group-directive.component.html',
-  styleUrl: './form-group-directive.component.scss',
+  templateUrl: './test-form1.component.html',
 })
 export class TestForm1Component implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
@@ -71,7 +70,7 @@ export class TestForm1Component implements OnInit {
       rolle: ['', [Validators.minLength(5), Validators.required]],
     }),
     adresseGroup: this.fb.group({
-      vejnavn: ['', Validators.required],
+      vejnavn: ['', [Validators.required, Validators.minLength(4)]],
       husnummer: ['', [CannotBeNegativeValidator, Validators.required]],
       postnummer: [
         null,

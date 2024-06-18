@@ -32,7 +32,6 @@ const person = {
     MaterialModule,
   ],
   templateUrl: './test-form2.component.html',
-  styleUrl: './test-form2.component.scss',
 })
 export class TestForm2Component {
   fb: FormBuilder = inject(FormBuilder);

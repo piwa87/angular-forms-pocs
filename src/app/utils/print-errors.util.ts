@@ -5,7 +5,6 @@ import {
   FormGroup,
 } from '@angular/forms';
 
-// Recursive function to print errors
 export const printErrors = (
   control: AbstractControl,
   path: string = ''
@@ -25,6 +24,5 @@ export const printErrors = (
     if (control.errors) {
       console.log(`${path} has following errors`, control.errors);
     }
-    // console.log(`${path} has following errors`, control.errors);
   }
 };

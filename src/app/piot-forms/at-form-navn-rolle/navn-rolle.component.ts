@@ -8,19 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { CustomControlComplexBaseDirective } from '../../custom-controls/custom-control-base/custom-control-complex-base.directive';
 import { CommonModule } from '@angular/common';
-import { ErrorViewerComponent } from '../../custom-controls/error-viewer/error-viewer.component';
 
 @Component({
   selector: 'at-form-navn-rolle',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MaterialModule,
-    CommonModule,
-    ErrorViewerComponent,
-  ],
+  imports: [ReactiveFormsModule, MaterialModule, CommonModule],
   templateUrl: './navn-rolle.component.html',
   styleUrl: './navn-rolle.component.scss',
   viewProviders: [

@@ -8,7 +8,8 @@
       formControlName="vejnavn"
       type="text"
     />
-    <at-error [errors]="errors" fc="vejnavn" />
+
+    <mat-error>{{ getErrorMessage('vejnavn') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Husnummer</mat-label>
@@ -18,22 +19,19 @@
       formControlName="husnummer"
       type="number"
     />
-    @if (errors?.['husnummer']?.['cannotBeNegative']) {
-    <mat-error>1..2..3..</mat-error>
-    } @else if (errors?.['husnummer']?.['required']) {
-    <mat-error>Husnummer skal angives</mat-error>
-    }
+
+    <mat-error>{{ getErrorMessage('husnummer') }}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Postnummer</mat-label>
     <input matInput placeholder="Postnummer" formControlName="postnummer" />
-    @if (errors?.['postnummer']?.['pattern']) {
+    <!-- @if (errors?.['postnummer']?.['pattern']) {
     <mat-error>Angiv 4-cifret postnummer</mat-error>
     } @else if (errors?.['postnummer']?.['required']) {
     <mat-error>Skal angives</mat-error>
-    }
-    <mat-error></mat-error>
+    } -->
+    <mat-error>{{ getErrorMessage('postnummer') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>By</mat-label>
