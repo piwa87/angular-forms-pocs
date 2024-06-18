@@ -4,6 +4,7 @@
     <mat-label>Navn</mat-label>
     <input matInput placeholder="Navn" formControlName="navn" />
     <!-- <mat-error>Something is wrong</mat-error> -->
+
     <mat-error>{{ getErrorMessage('navn') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>

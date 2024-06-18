@@ -26,12 +26,14 @@
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Postnummer</mat-label>
     <input matInput placeholder="Postnummer" formControlName="postnummer" />
-    <!-- @if (errors?.['postnummer']?.['pattern']) {
+
+    @if (errors?.['postnummer']?.['pattern']) {
     <mat-error>Angiv 4-cifret postnummer</mat-error>
     } @else if (errors?.['postnummer']?.['required']) {
     <mat-error>Skal angives</mat-error>
-    } -->
-    <mat-error>{{ getErrorMessage('postnummer') }}</mat-error>
+    }
+
+    <!-- <mat-error>{{ getErrorMessage('postnummer') }}</mat-error> -->
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>By</mat-label>

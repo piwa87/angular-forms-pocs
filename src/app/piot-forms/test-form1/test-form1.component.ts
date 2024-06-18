@@ -18,10 +18,14 @@ import {
   DanskAdresseForm,
   AtFormDanskAdresseComponent,
 } from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
-import { CannotBeNegativeValidator } from '../../custom-controls/custom-control-base/custom-vallidators';
 import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
 import { AtFormNavnRolleTwoComponent } from '../at-form-navn-rolle-two/at-form-navn-rolle-two.component';
 import { printErrors } from '../../utils/print-errors.util';
+import {
+  AtFormEmailTwoComponent,
+  EmailFormTwo,
+} from '../at-form-email-two/at-form-email-two.component';
+import { MustContainNameValidator } from '../../custom-controls/custom-control-base/custom-vallidators';
 
 interface NavnRolleForm {
   navn: FormControl<string | null>;
@@ -40,6 +44,7 @@ interface MainForm {
   navnRolle2: FormGroup<NavnRolleForm>;
   adresseGroup: FormGroup<AdresseGroup>;
   email: FormControl<string | null>;
+  email2: FormControl<string | null>;
 }
 
 @Component({
@@ -52,6 +57,7 @@ interface MainForm {
     AtFormNavnRolleComponent,
     AtFormDanskAdresseComponent,
     AtFormEmailComponent,
+    AtFormEmailTwoComponent,
     AtFormNavnRolleTwoComponent,
   ],
   templateUrl: './test-form1.component.html',
@@ -60,11 +66,11 @@ export class TestForm1Component implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
 
   testForm1: FormGroup<MainForm> = this.fb.group({
-    // navnRolle100: this.fb.group({
-    //   navn: ['', [Validators.required, Validators.minLength(4)]],
-    //   rolle: ['', [Validators.minLength(5), Validators.required]],
-    // }),
-    navnRolle100: NavnRolleForm,
+    navnRolle100: this.fb.group({
+      navn: ['', [Validators.required, Validators.minLength(4)]],
+      rolle: [''],
+    }),
+    // navnRolle100: NavnRolleForm,
     navnRolle2: this.fb.group({
       navn: [
         '',
@@ -78,6 +84,7 @@ export class TestForm1Component implements OnInit {
     }),
     adresseGroup: DanskAdresseForm,
     email: ['', [Validators.email, Validators.required]],
+    email2: EmailFormTwo,
   }) as FormGroup<MainForm>;
 
   navnRolleErrors: ValidationErrors | null = null;

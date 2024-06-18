@@ -6,6 +6,7 @@
   />
   <at-form-dansk-adresse fc="adresseGroup" [errors]="adresseErrors" />
   <at-form-email fc="email" [errors]="testForm1.controls.email.errors" />
+  <at-form-email-two fc="email2" [errors]="testForm1.controls.email2.errors" />
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
   <mat-error *ngIf="testForm1.invalid && testForm1.touched"
     >Form is invalid</mat-error

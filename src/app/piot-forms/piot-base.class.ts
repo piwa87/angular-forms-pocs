@@ -22,6 +22,20 @@ export abstract class PiotBaseClass {
     return null;
   }
 
+  getErrorMessageSingle(formControlName: string): string | null {
+    console.log('[SINGLE] incoming errors in ' + formControlName, this.errors);
+
+    if (this.errors) {
+      // const formControlSpecificErrors = this.errors?.[formControlName];
+      // console.log(`errors for '${formControlName}'`, formControlSpecificErrors);
+
+      // if (formControlSpecificErrors) {
+      return this.getErrorMessageByCode(Object.keys(this.errors)[0] ?? '');
+      // }
+    }
+    return null;
+  }
+
   getErrorMessageByCode(errorCode: string): string {
     const knownError = KnownValidationErrors.find(
       (error) => error.code === errorCode

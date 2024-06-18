@@ -45,7 +45,7 @@ export class TestForm3Component {
       Validators.email,
     ]),
     emailPaen: EmailForm,
-    favoritFarve: this.fb.control<string>('green', Validators.required),
+    favoritFarve: this.fb.control<string>('', Validators.required),
     person23: NavnRolleForm,
   });
 

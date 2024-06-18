@@ -25,29 +25,7 @@ import { KnownValidationErrors } from '../../custom-controls/custom-control-base
     },
   ],
 })
-export class AtFormNavnRolleComponent extends PiotBaseClass {
-  // @Input({ required: true }) fc: string = '';
-  // @Input({ required: true }) errors: any = null;
-  // getErrorMessage(formControlName: string): string | null {
-  //   console.log('incoming errors in ' + formControlName, this.errors);
-  //   if (this.errors) {
-  //     const formControlSpecificErrors = this.errors?.[formControlName];
-  //     console.log(`errors for '${formControlName}'`, formControlSpecificErrors);
-  //     if (formControlSpecificErrors) {
-  //       return this.getErrorMessageByCode(
-  //         Object.keys(formControlSpecificErrors)[0] ?? ''
-  //       );
-  //     }
-  //   }
-  //   return null;
-  // }
-  // getErrorMessageByCode(errorCode: string): string {
-  //   const knownError = KnownValidationErrors.find(
-  //     (error) => error.code === errorCode
-  //   );
-  //   return knownError ? knownError.message : 'Ukendt fejl';
-  // }
-}
+export class AtFormNavnRolleComponent extends PiotBaseClass {}
 
 export const NavnRolleForm = new FormGroup({
   navn: new FormControl<string | null>(null, [
