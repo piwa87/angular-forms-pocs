@@ -2,7 +2,7 @@
   <legend>{{ label }}</legend>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>{{ label }}</mat-label>
-    <mat-select [compareWith]="compareFn" [formControlName]="fc">
+    <mat-select [compareWith]="compareFn" [formControlName]="fcName">
       @if (enableEmptyOption) {
       <mat-option [value]="null"></mat-option>
       } @for (item of items; track $index) {

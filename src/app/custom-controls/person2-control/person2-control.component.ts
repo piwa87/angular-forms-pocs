@@ -9,10 +9,6 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CustomControlComplexBaseDirective } from '../custom-control-base/custom-control-complex-base.directive';
-import {
-  updateFormControlTree,
-  validateFormControlTree,
-} from '../custom-control-base/update-form-control-tree';
 
 @Component({
   selector: 'app-person2-control',
@@ -33,10 +29,7 @@ import {
     },
   ],
 })
-export class Person2ControlComponent
-  extends CustomControlComplexBaseDirective
-  implements OnInit
-{
+export class Person2ControlComponent extends CustomControlComplexBaseDirective {
   onChange = (value: any) => {};
   // override fg = this.fb.group({
   //   name: ['hello', [Validators.minLength(4)]],
@@ -45,13 +38,6 @@ export class Person2ControlComponent
 
   constructor() {
     super();
-  }
-
-  ngOnInit(): void {
-    this.fg.markAllAsTouched = () => {
-      updateFormControlTree(this.fg);
-      validateFormControlTree(this.fg);
-    };
   }
 
   onTouchedAndChange() {

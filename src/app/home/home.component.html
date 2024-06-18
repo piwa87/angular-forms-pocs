@@ -1,17 +1,13 @@
 <form [formGroup]="fg" (ngSubmit)="onSubmit()">
-  <!-- [formControl]="fg.controls.personInfo" -->
   <app-person2-control
     [fg]="fg.controls.personInfo"
     [errors]="fg.controls.personInfo.errors"
     legend="Name"
   />
-  <!-- [formControl]="fg.controls.adress" -->
-  <app-address-anguni legend="Address" [fg]="fg.controls.adress" />
   <app-quantity2
     [formControl]="fg.controls.quantity"
     [errors]="fg.controls.quantity.errors"
   />
-  <!-- <at-form-email fc="email" /> -->
 
   <button mat-raised-button type="submit">SUBMIT</button>
   <mat-error *ngIf="fg.invalid">Form is invalid</mat-error>

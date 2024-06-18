@@ -1,22 +1,21 @@
 import { CommonModule, KeyValue } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AtSelectComponent } from '../at-select/at-select.component';
 import { MaterialModule } from '../../material-module';
+import { printErrors } from '../../utils/print-errors.util';
 import {
   AtFormEmailComponent,
   EmailForm,
 } from '../at-form-email/at-form-email.component';
 import {
-  AtRadioGroupComponent,
-  RadioButtonModel,
-} from '../at-radio-group/at-radio-group.component';
-import {
   AtFormNavnRolleComponent,
   NavnRolleForm,
 } from '../at-form-navn-rolle/navn-rolle.component';
-import { printErrors } from '../../utils/print-errors.util';
-import { AtSelect2Component } from '../at-select2/at-select2.component';
+import {
+  AtRadioGroupComponent,
+  RadioButtonModel,
+} from '../at-radio-group/at-radio-group.component';
+import { AtSelectComponent } from '../at-select/at-select.component';
 
 @Component({
   selector: 'app-test-form3',
@@ -26,7 +25,6 @@ import { AtSelect2Component } from '../at-select2/at-select2.component';
     AtFormNavnRolleComponent,
     AtRadioGroupComponent,
     AtSelectComponent,
-    AtSelect2Component,
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,

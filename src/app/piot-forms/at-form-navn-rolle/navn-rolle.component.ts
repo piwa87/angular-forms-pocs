@@ -1,4 +1,5 @@
-import { Component, Input, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import {
   ControlContainer,
   FormControl,
@@ -8,9 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { CommonModule } from '@angular/common';
-import { PiotBaseClass } from '../piot-base.class';
-import { KnownValidationErrors } from '../../custom-controls/custom-control-base/custom-vallidators';
+import { MultipleFieldBase } from '../base-classes/multiple-field-base';
 
 @Component({
   selector: 'at-form-navn-rolle',
@@ -25,7 +24,7 @@ import { KnownValidationErrors } from '../../custom-controls/custom-control-base
     },
   ],
 })
-export class AtFormNavnRolleComponent extends PiotBaseClass {}
+export class AtFormNavnRolleComponent extends MultipleFieldBase {}
 
 export const NavnRolleForm = new FormGroup({
   navn: new FormControl<string | null>(null, [

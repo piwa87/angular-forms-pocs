@@ -1,23 +1,21 @@
 <form [formGroup]="testForm3" (ngSubmit)="onSubmit()">
-  <at-select fc="yndlingsdyr" label="Yndlings Dyr" [items]="kaeledyrsItems" />
-  <at-select-2
-    [formControl]="testForm3.controls.two"
-    label="Two"
+  <at-select
+    fcName="yndlingsdyr"
+    label="Yndlings Dyr"
     [items]="kaeledyrsItems"
-    [enableEmptyOption]="true"
   />
   <at-form-email
-    fc="emailPaen"
+    fcName="emailPaen"
     [errors]="testForm3.controls.emailPaen.errors"
   />
   <at-radio-group
-    fc="favoritFarve"
+    fcName="favoritFarve"
     label="Favorit farve:"
     [options]="favoritFarveItems"
     [direction]="'vertical'"
   />
   <at-form-navn-rolle
-    fc="person23"
+    fgName="person23"
     [errors]="testForm3.controls.person23.errors"
   />
   <br />

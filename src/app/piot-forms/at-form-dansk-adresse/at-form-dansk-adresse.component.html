@@ -1,4 +1,4 @@
-<fieldset [formGroupName]="fc">
+<fieldset [formGroupName]="fgName">
   <legend>Adresse</legend>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Vejnavn</mat-label>
@@ -9,7 +9,7 @@
       type="text"
     />
 
-    <mat-error>{{ getErrorMessage('vejnavn') }}</mat-error>
+    <mat-error>{{ getErrorsFormGroup('vejnavn') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Husnummer</mat-label>
@@ -20,7 +20,7 @@
       type="number"
     />
 
-    <mat-error>{{ getErrorMessage('husnummer') }}</mat-error>
+    <mat-error>{{ getErrorsFormGroup('husnummer') }}</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" hideRequiredMarker>

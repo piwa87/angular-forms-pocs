@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { SingleFieldBase } from '../base-classes/single-field-base';
 
 @Component({
   selector: 'at-radio-group',
@@ -21,9 +22,7 @@ import { MatRadioModule } from '@angular/material/radio';
     },
   ],
 })
-export class AtRadioGroupComponent {
-  @Input({ required: true }) fc: string = '';
-
+export class AtRadioGroupComponent extends SingleFieldBase {
   @Input() label?: string;
   @Input({ required: true }) options: RadioButtonModel[] = [];
   @Input() readOnly: boolean = false;

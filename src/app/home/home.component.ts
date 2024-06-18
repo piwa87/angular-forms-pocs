@@ -1,10 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  AddressAnguniComponent,
-  AddressForm,
-} from '../custom-controls/adress-anguni/adress-anguni.component';
 import { Quantity2Component } from '../custom-controls/quantity2/quantity2.component';
 import { CannotBeNegativeValidator } from '../custom-controls/custom-control-base/custom-vallidators';
 import {
@@ -19,7 +15,6 @@ import { AtFormEmailComponent } from '../piot-forms/at-form-email/at-form-email.
   selector: 'app-home',
   standalone: true,
   imports: [
-    AddressAnguniComponent,
     AtFormEmailComponent,
     CommonModule,
     MatButtonModule,
@@ -40,7 +35,6 @@ export class HomeComponent {
     //   surname: [''],
     // }),
     personInfo: Person2Form,
-    adress: AddressForm,
     quantity: [0, [Validators.max(8), CannotBeNegativeValidator]],
     email: ['', [Validators.required, Validators.email]],
   });
@@ -60,11 +54,6 @@ export class HomeComponent {
     console.group('personInfo');
     console.log('value:', this.fg.controls.personInfo.value);
     console.log('valid:', this.fg.controls.personInfo.valid);
-    console.groupEnd();
-
-    console.group('adress');
-    console.log('value:', this.fg.controls.adress.value);
-    console.log('valid:', this.fg.controls.adress.valid);
     console.groupEnd();
 
     console.group('quantity');

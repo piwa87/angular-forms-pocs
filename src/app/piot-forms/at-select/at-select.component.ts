@@ -6,6 +6,7 @@ import {
   FormGroupDirective,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { SingleFieldBase } from '../base-classes/single-field-base';
 
 @Component({
   selector: 'at-select',
@@ -20,9 +21,7 @@ import {
     },
   ],
 })
-export class AtSelectComponent {
-  @Input({ required: true }) fc: string = '';
-
+export class AtSelectComponent extends SingleFieldBase {
   @Input() label: string = '';
   @Input() enableEmptyOption: boolean = false;
   @Input() items: KeyValue<any, string>[] = [];

@@ -2,7 +2,12 @@
   <legend>Email</legend>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Email</mat-label>
-    <input matInput placeholder="Email" [formControlName]="fc" type="email" />
+    <input
+      matInput
+      placeholder="Email"
+      [formControlName]="fcName"
+      type="email"
+    />
     <mat-error>Something is wrong</mat-error>
   </mat-form-field>
   <h6>Errors:</h6>

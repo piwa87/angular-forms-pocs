@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import {
   ControlContainer,
   FormControl,
   FormGroupDirective,
   ReactiveFormsModule,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { CommonModule } from '@angular/common';
+import { SingleFieldBase } from '../base-classes/single-field-base';
 
 @Component({
   selector: 'at-form-email',
@@ -22,10 +22,7 @@ import { CommonModule } from '@angular/common';
     },
   ],
 })
-export class AtFormEmailComponent {
-  @Input({ required: true }) fc: string = '';
-  @Input({ required: true }) errors: ValidationErrors | null = null;
-}
+export class AtFormEmailComponent extends SingleFieldBase {}
 
 export const EmailForm = new FormControl<string | null>(null, [
   Validators.required,
