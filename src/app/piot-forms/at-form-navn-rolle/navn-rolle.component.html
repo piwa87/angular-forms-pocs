@@ -3,11 +3,15 @@
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Navn</mat-label>
     <input matInput placeholder="Navn" formControlName="navn" />
-    <mat-error>Something is wrong</mat-error>
+    <!-- <mat-error>Something is wrong</mat-error> -->
+    <mat-error>{{ getErrorMessage('navn') }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker>
     <mat-label>Rolle</mat-label>
     <input matInput placeholder="Rolle" formControlName="rolle" />
-    <mat-error>Rolle skal angives</mat-error>
+    <!-- <mat-error>Rolle skal angives</mat-error> -->
+    <mat-error>{{ getErrorMessage('rolle') }}</mat-error>
   </mat-form-field>
+  <h6>Errors:</h6>
+  <pre>{{ errors | json }}</pre>
 </fieldset>

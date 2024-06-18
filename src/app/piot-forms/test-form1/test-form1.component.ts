@@ -9,9 +9,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { AtFormNavnRolleComponent } from '../at-form-navn-rolle/navn-rolle.component';
+import {
+  AtFormNavnRolleComponent,
+  NavnRolleForm,
+} from '../at-form-navn-rolle/navn-rolle.component';
 import { CommonModule } from '@angular/common';
-import { AtFormDanskAdresseComponent } from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
+import {
+  DanskAdresseForm,
+  AtFormDanskAdresseComponent,
+} from '../at-form-dansk-adresse/at-form-dansk-adresse.component';
 import { CannotBeNegativeValidator } from '../../custom-controls/custom-control-base/custom-vallidators';
 import { AtFormEmailComponent } from '../at-form-email/at-form-email.component';
 import { AtFormNavnRolleTwoComponent } from '../at-form-navn-rolle-two/at-form-navn-rolle-two.component';
@@ -53,51 +59,51 @@ interface MainForm {
 export class TestForm1Component implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
 
-  mainForm: FormGroup<MainForm> = this.fb.group({
-    navnRolle100: this.fb.group({
-      navn: ['', [Validators.required, Validators.minLength(4)]],
-      rolle: ['', [Validators.minLength(5), Validators.required]],
-    }),
+  testForm1: FormGroup<MainForm> = this.fb.group({
+    // navnRolle100: this.fb.group({
+    //   navn: ['', [Validators.required, Validators.minLength(4)]],
+    //   rolle: ['', [Validators.minLength(5), Validators.required]],
+    // }),
+    navnRolle100: NavnRolleForm,
     navnRolle2: this.fb.group({
       navn: [
         '',
         Validators.compose([
           Validators.required,
           Validators.minLength(4),
-          Validators.maxLength(3),
+          Validators.maxLength(5),
         ]),
       ],
       rolle: ['', [Validators.minLength(5), Validators.required]],
     }),
-    adresseGroup: this.fb.group({
-      vejnavn: ['', [Validators.required, Validators.minLength(4)]],
-      husnummer: ['', [CannotBeNegativeValidator, Validators.required]],
-      postnummer: [
-        null,
-        [Validators.pattern('^[0-9]{4}$'), Validators.required],
-      ],
-      by: [''],
-    }),
+    adresseGroup: DanskAdresseForm,
     email: ['', [Validators.email, Validators.required]],
   }) as FormGroup<MainForm>;
 
+  navnRolleErrors: ValidationErrors | null = null;
   adresseErrors: ValidationErrors | null = null;
 
   ngOnInit(): void {
-    this.mainForm.controls.adresseGroup.valueChanges.subscribe((value) => {
-      this.adresseErrors = collectErrors(this.mainForm.controls.adresseGroup);
+    this.testForm1.controls.navnRolle100.valueChanges.subscribe((value) => {
+      this.navnRolleErrors = collectErrors(
+        this.testForm1.controls.navnRolle100
+      );
+    });
+    this.testForm1.controls.adresseGroup.valueChanges.subscribe((value) => {
+      this.adresseErrors = collectErrors(this.testForm1.controls.adresseGroup);
     });
   }
 
   onSubmit(): void {
-    this.adresseErrors = collectErrors(this.mainForm.controls.adresseGroup);
-    this.mainForm.markAllAsTouched();
-    if (this.mainForm.invalid) {
+    this.navnRolleErrors = collectErrors(this.testForm1.controls.navnRolle100);
+    this.adresseErrors = collectErrors(this.testForm1.controls.adresseGroup);
+    this.testForm1.markAllAsTouched();
+    if (this.testForm1.invalid) {
       console.log('Formularen er ugyldig.');
-      printErrors(this.mainForm);
+      printErrors(this.testForm1);
       return;
     }
-    console.log('Form valid. Value:', this.mainForm.value);
+    console.log('Form valid. Value:', this.testForm1.value);
   }
 }
 

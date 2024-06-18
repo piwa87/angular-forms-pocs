@@ -16,7 +16,10 @@
     [options]="favoritFarveItems"
     [direction]="'vertical'"
   />
-  <at-form-navn-rolle fc="person23" />
+  <at-form-navn-rolle
+    fc="person23"
+    [errors]="testForm3.controls.person23.errors"
+  />
   <br />
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
 </form>

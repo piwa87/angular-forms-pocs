@@ -9,6 +9,8 @@ import {
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
 import { CommonModule } from '@angular/common';
+import { PiotBaseClass } from '../piot-base.class';
+import { KnownValidationErrors } from '../../custom-controls/custom-control-base/custom-vallidators';
 
 @Component({
   selector: 'at-form-navn-rolle',
@@ -23,8 +25,28 @@ import { CommonModule } from '@angular/common';
     },
   ],
 })
-export class AtFormNavnRolleComponent {
-  @Input({ required: true }) fc: string = '';
+export class AtFormNavnRolleComponent extends PiotBaseClass {
+  // @Input({ required: true }) fc: string = '';
+  // @Input({ required: true }) errors: any = null;
+  // getErrorMessage(formControlName: string): string | null {
+  //   console.log('incoming errors in ' + formControlName, this.errors);
+  //   if (this.errors) {
+  //     const formControlSpecificErrors = this.errors?.[formControlName];
+  //     console.log(`errors for '${formControlName}'`, formControlSpecificErrors);
+  //     if (formControlSpecificErrors) {
+  //       return this.getErrorMessageByCode(
+  //         Object.keys(formControlSpecificErrors)[0] ?? ''
+  //       );
+  //     }
+  //   }
+  //   return null;
+  // }
+  // getErrorMessageByCode(errorCode: string): string {
+  //   const knownError = KnownValidationErrors.find(
+  //     (error) => error.code === errorCode
+  //   );
+  //   return knownError ? knownError.message : 'Ukendt fejl';
+  // }
 }
 
 export const NavnRolleForm = new FormGroup({
