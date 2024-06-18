@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { SingleFieldBase } from '../base-classes/single-field-base';
+import { SingleFieldBaseClass } from '../base-classes/single-field-base';
 import { ValidationErrorCode } from '../utils/custom-vallidators';
 
 @Component({
@@ -23,23 +23,7 @@ import { ValidationErrorCode } from '../utils/custom-vallidators';
     },
   ],
 })
-export class AtFormEmailComponent extends SingleFieldBase {
-  override getErrors(): string | null {
-    const getErrorMessageByCode = (
-      errorCode: string,
-      knownErrors = EmailValidationErrors
-    ): string =>
-      knownErrors.find((error) => error.code === errorCode)?.message ||
-      'Ukendt fejl';
-
-    console.log(`[FormControl] errors in '${this.fcName}'`, this.errors);
-
-    if (this.errors) {
-      return getErrorMessageByCode(Object.keys(this.errors)[0] ?? '');
-    }
-    return null;
-  }
-}
+export class AtFormEmailComponent extends SingleFieldBaseClass {}
 
 export const EmailForm = new FormControl<string | null>(null, [
   Validators.required,

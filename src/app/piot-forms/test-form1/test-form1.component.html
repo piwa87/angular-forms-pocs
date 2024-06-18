@@ -2,6 +2,12 @@
   <at-form-navn-rolle fgName="navnRolleGroup" [errors]="navnRolleErrors" />
   <at-form-dansk-adresse fgName="adresseGroup" [errors]="adresseErrors" />
   <at-form-email fcName="email" [errors]="testForm1.controls.email.errors" />
+  <at-text-input
+    fcName="fritekst"
+    label="Fritekst"
+    [errors]="testForm1.controls.fritekst.errors"
+  />
+
   <button mat-button mat-raised-button color="primary">SUBMIT</button>
   <mat-error *ngIf="testForm1.invalid && testForm1.touched"
     >Form is invalid</mat-error

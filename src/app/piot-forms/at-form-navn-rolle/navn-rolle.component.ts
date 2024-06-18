@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MaterialModule } from '../../material-module';
-import { MultipleFieldBase } from '../base-classes/multiple-field-base';
+import { MultipleFieldBaseClass } from '../base-classes/multiple-field-base';
 
 @Component({
   selector: 'at-form-navn-rolle',
@@ -24,7 +24,7 @@ import { MultipleFieldBase } from '../base-classes/multiple-field-base';
     },
   ],
 })
-export class AtFormNavnRolleComponent extends MultipleFieldBase {}
+export class AtFormNavnRolleComponent extends MultipleFieldBaseClass {}
 
 export const NavnRolleForm = new FormGroup({
   navn: new FormControl<string | null>(null, [

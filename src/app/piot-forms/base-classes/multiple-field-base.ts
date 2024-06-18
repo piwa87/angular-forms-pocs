@@ -3,12 +3,12 @@ import { ValidationErrors } from '@angular/forms';
 import { KnownValidationErrors } from '../utils/known-validation-errors';
 
 @Component({ template: '' })
-export abstract class MultipleFieldBase {
+export abstract class MultipleFieldBaseClass {
   @Input({ required: true }) fgName: string = '';
   @Input() errors: ValidationErrors | null = null;
 
   getErrorsFrom(fgName: string): string | null {
-    const getErrorMessageByCode = (
+    const getErrorMessageFromCode = (
       errorCode: string,
       knownErrors: { code: string; message: string }[] = KnownValidationErrors
     ): string =>
@@ -17,10 +17,9 @@ export abstract class MultipleFieldBase {
 
     if (this.errors) {
       const fcSpecificErrors = this.errors?.[fgName];
-      console.log(`[FormGroup] errors in '${fgName}'`, this.errors?.[fgName]);
 
       if (this.errors?.[fgName]) {
-        return getErrorMessageByCode(Object.keys(fcSpecificErrors)[0] ?? '');
+        return getErrorMessageFromCode(Object.keys(fcSpecificErrors)[0] ?? '');
       }
     }
     return null;

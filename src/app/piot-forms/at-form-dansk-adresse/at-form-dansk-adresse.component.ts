@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CannotBeNegativeValidator } from '../utils/custom-vallidators';
-import { MultipleFieldBase } from '../base-classes/multiple-field-base';
+import { MultipleFieldBaseClass } from '../base-classes/multiple-field-base';
 
 @Component({
   selector: 'at-form-dansk-adresse',
@@ -25,7 +25,7 @@ import { MultipleFieldBase } from '../base-classes/multiple-field-base';
     },
   ],
 })
-export class AtFormDanskAdresseComponent extends MultipleFieldBase {}
+export class AtFormDanskAdresseComponent extends MultipleFieldBaseClass {}
 
 export const DanskAdresseForm = new FormGroup({
   vejnavn: new FormControl<string | null>('', [

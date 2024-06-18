@@ -23,6 +23,10 @@ import {
   EmailForm,
 } from '../at-form-email/at-form-email.component';
 import { printErrors } from '../utils/print-errors.util';
+import {
+  AtTextForm,
+  AtTextInputComponent,
+} from '../at-text-input/at-text-input.component';
 
 interface NavnRolleForm {
   navn: FormControl<string | null>;
@@ -40,6 +44,7 @@ interface MainForm {
   navnRolleGroup: FormGroup<NavnRolleForm>;
   adresseGroup: FormGroup<AdresseGroup>;
   email: FormControl<string | null>;
+  fritekst: FormControl<string | null>;
 }
 
 @Component({
@@ -52,6 +57,7 @@ interface MainForm {
     AtFormNavnRolleComponent,
     AtFormDanskAdresseComponent,
     AtFormEmailComponent,
+    AtTextInputComponent,
   ],
   templateUrl: './test-form1.component.html',
 })
@@ -62,6 +68,7 @@ export class TestForm1Component implements OnInit {
     navnRolleGroup: NavnRolleForm,
     adresseGroup: DanskAdresseForm,
     email: EmailForm,
+    fritekst: AtTextForm,
   }) as FormGroup<MainForm>;
 
   navnRolleErrors: ValidationErrors | null = null;

@@ -1,0 +1,5 @@
+<mat-form-field hideRequiredMarker>
+  <mat-label>{{ label }}</mat-label>
+  <input type="text" matInput [formControlName]="fcName" />
+  <mat-error>{{ getErrors() }}</mat-error>
+</mat-form-field>
